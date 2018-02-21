@@ -77,8 +77,26 @@ let webConfig = {
             name: 'fonts/[name].[ext]'
           }
         }
+      },
+      {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader'
+            }
+          }
+      },
+      {
+          test: /\.s[a|c]ss$/,
+          loader: 'style-loader!css-loader!sass-loader'
       }
     ]
+  },
+  vue: {
+    loaders: {
+      scss: 'style!css!sass'
+    }
   },
   plugins: [
     new ExtractTextPlugin('styles.css'),

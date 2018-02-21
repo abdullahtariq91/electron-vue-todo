@@ -10,7 +10,7 @@
   };
 </script>
 
-<style>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
   * {
