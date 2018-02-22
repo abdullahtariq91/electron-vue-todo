@@ -102,15 +102,15 @@ let rendererConfig = {
           }
         }
       },
-      {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-          options: {
-            loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader'
-            }
-          }
-      },
+      // {
+      //     test: /\.vue$/,
+      //     loader: 'vue-loader',
+      //     options: {
+      //       loaders: {
+      //       scss: 'vue-style-loader!css-loader!sass-loader'
+      //       }
+      //     }
+      // },
       {
           test: /\.s[a|c]ss$/,
           loader: 'style-loader!css-loader!sass-loader'

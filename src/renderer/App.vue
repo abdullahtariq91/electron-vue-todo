@@ -5,6 +5,9 @@
 </template>
 
 <script>
+  import 'bootstrap/dist/css/bootstrap.css';
+  import '../assets/sass/paper-dashboard.scss';
+
   export default {
     name: 'evtodo',
   };
