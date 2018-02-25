@@ -8,8 +8,8 @@ import App from './App';
 import router from './router';
 import store from './store';
 import GlobalComponents from '../gloablComponents';
-import Notifications from '../components/UIComponents/NotificationPlugin';
-import SideBar from '../components/UIComponents/SidebarPlugin';
+import Notifications from './components/UIComponents/NotificationPlugin';
+import SideBar from './components/UIComponents/SidebarPlugin';
 
 // plugin setup
 Vue.use(VueRouter);

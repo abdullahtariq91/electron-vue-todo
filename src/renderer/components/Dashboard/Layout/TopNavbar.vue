@@ -65,7 +65,8 @@
         this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
       },
       hideSidebar() {
-        this.$sidebar.displaySidebar(false);
+        console.log('hiding sidebar');
+        this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
       },
     },
   };
