@@ -91,9 +91,10 @@
     display: none;
   }
 
-  .main-panel {
-    width: 100%;
-  }
+// removed
+  // .main-panel {
+  //   width: 100%;
+  // }
   .navbar-transparent {
     padding-top: 15px;
     background-color: rgba(0, 0, 0, 0.45);
@@ -256,6 +257,7 @@
   .main-panel.push-left{
     right:230px;
   }
+
   .nav-open .navbar-collapse {
     @include transform-translate-x(0px);
   }

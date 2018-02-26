@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-    <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
+    <!-- <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
 
-    </side-bar>
-    <notifications>
+    </side-bar> -->
+    <!-- <notifications>
 
-    </notifications>
+    </notifications> -->
     <div class="main-panel">
       <top-navbar></top-navbar>
 
