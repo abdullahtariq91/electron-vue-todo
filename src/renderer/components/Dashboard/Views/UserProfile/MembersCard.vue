@@ -33,43 +33,43 @@
 </template>
 <script>
   export default {
-    data () {
+    data() {
       return {
         title: 'Team members',
         members: [
           {
             image: 'static/img/faces/face-0.jpg',
             name: 'Dj Khaled',
-            status: 'Offline'
+            status: 'Offline',
           },
           {
             image: 'static/img/faces/face-1.jpg',
             name: 'Creative Tim',
-            status: 'Available'
+            status: 'Available',
           },
           {
             image: 'static/img/faces/face-1.jpg',
             name: 'Flume',
-            status: 'Busy'
-          }
-        ]
-      }
+            status: 'Busy',
+          },
+        ],
+      };
     },
     methods: {
-      getStatusClass (status) {
+      getStatusClass(status) {
         switch (status) {
           case 'Offline':
-            return 'text-muted'
+            return 'text-muted';
           case 'Available':
-            return 'text-success'
+            return 'text-success';
           case 'Busy':
-            return 'text-danger'
+            return 'text-danger';
           default:
-            return 'text-success'
+            return 'text-success';
         }
-      }
-    }
-  }
+      },
+    },
+  };
 
 </script>
 <style>

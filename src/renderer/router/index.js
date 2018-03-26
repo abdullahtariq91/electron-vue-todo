@@ -16,7 +16,7 @@ export default new Router({
           name: 'overview',
           component: UserProfile,
         },
-      ]
+      ],
     },
 
     {
