@@ -9,11 +9,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      redirect: 'dashboard',
       component: require('@/components/Home').default,
       children: [
         {
-          path: 'overview',
-          name: 'overview',
+          path: 'dashboard',
+          name: 'dashboard',
           component: UserProfile,
         },
       ],
