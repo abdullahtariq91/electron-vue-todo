@@ -1,18 +1,18 @@
 <template>
     <div class="row">
       <div class="col-xs-4">
-        <user-card>
+        <task-list>
 
-        </user-card>
+        </task-list>
       </div>
     </div>
 </template>
 
 <script>
-  import UserCard from './UserProfile/UserCard.vue';
+  import TaskList from './UserProfile/TaskList.vue';
   export default {
     components: {
-      UserCard,
+      TaskList,
     },
   };
 </script>
