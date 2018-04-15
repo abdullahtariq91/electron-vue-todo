@@ -6,15 +6,17 @@
     <div class="content">
       <div class="author">
         <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="...">
-        <h4 class="title">Abdullah Tariq
+        <h4 class="title">Chet Faker
           <br>
           <a href="#">
-            <small>@abdullahtariq91</small>
+            <small>@chetfaker</small>
           </a>
         </h4>
       </div>
       <p class="description text-center">
-        "Just some text!"
+        "I like the way you work it
+        <br> No diggity
+        <br> I wanna bag it up"
       </p>
     </div>
     <hr>
@@ -23,7 +25,6 @@
         <div v-for="(info,index) in details" :class="getClasses(index)">
           <h5>{{info.title}}
             <br>
-            hjhj
             <small>{{info.subTitle}}</small>
           </h5>
         </div>
@@ -33,21 +34,23 @@
 </template>
 <script>
   export default {
-    data: {
-      details: [
-        {
-          title: '12',
-          subTitle: 'Files',
-        },
-        {
-          title: '2GB',
-          subTitle: 'Used',
-        },
-        {
-          title: '24,6$',
-          subTitle: 'Spent',
-        },
-      ],
+    data() {
+      return {
+        details: [
+          {
+            title: '12',
+            subTitle: 'Files',
+          },
+          {
+            title: '2GB',
+            subTitle: 'Used',
+          },
+          {
+            title: '24,6$',
+            subTitle: 'Spent',
+          },
+        ],
+      };
     },
     methods: {
       getClasses(index) {
