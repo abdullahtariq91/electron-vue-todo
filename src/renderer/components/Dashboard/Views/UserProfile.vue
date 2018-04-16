@@ -5,6 +5,16 @@
 
         </task-list>
       </div>
+      <div class="col-xs-4">
+        <task-list>
+
+        </task-list>
+      </div>
+      <div class="col-xs-4">
+        <task-list>
+
+        </task-list>
+      </div>
     </div>
 </template>
 
