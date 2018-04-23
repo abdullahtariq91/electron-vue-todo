@@ -5,7 +5,10 @@
     </div>
     <div class="content">
       <div class="author">
-        <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="...">
+        <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
+        <div class="avatar border-white margin-center background-white">
+          <h1>Hey</h1>
+        </div>
         <h4 class="title">Chet Faker
           <br>
           <a href="#">
