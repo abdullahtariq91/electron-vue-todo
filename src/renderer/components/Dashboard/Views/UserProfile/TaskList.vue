@@ -9,7 +9,7 @@
         <div class="avatar border-white margin-center background-white">
           <h1>Hey</h1>
         </div>
-        <h4 class="title">Chet Faker
+        <h4 class="title">{{myProp}}
           <br>
           <a href="#">
             <small>@chetfaker</small>
@@ -37,6 +37,9 @@
 </template>
 <script>
   export default {
+    props: [
+      'myProp',
+    ],
     data() {
       return {
         details: [

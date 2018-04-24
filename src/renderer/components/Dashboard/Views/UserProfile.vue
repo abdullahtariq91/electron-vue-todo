@@ -1,17 +1,17 @@
 <template>
     <div class="row">
       <div class="col-xs-4">
-        <task-list>
+        <task-list :myProp="name1">
 
         </task-list>
       </div>
       <div class="col-xs-4">
-        <task-list>
+        <task-list :myProp="name2">
 
         </task-list>
       </div>
       <div class="col-xs-4">
-        <task-list>
+        <task-list :myProp="name3">
 
         </task-list>
       </div>
@@ -23,6 +23,13 @@
   export default {
     components: {
       TaskList,
+    },
+    data() {
+      return {
+        name1: 'John',
+        name2: 'Jahn',
+        name3: 'Juhn',
+      };
     },
   };
 </script>
