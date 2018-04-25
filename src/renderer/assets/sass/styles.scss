@@ -111,3 +111,21 @@ main > div { flex-basis: 50%; }
 .background-white {
   background: white;
 }
+
+.btn-sm-height {
+  font-size: 14px !important;
+  height: 40px !important;
+}
+
+.form-group-small {
+  margin-bottom: 0px !important;
+}
+
+.form-control-small {
+  font-size: 12px !important;
+  height: 25px !important;
+}
+
+.text-bolded:hover .text-muted {
+  color: black !important;
+}

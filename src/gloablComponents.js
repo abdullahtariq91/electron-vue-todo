@@ -1,4 +1,5 @@
 import fgInput from './renderer/components/UIComponents/Inputs/formGroupInput.vue';
+import fgInputSmall from './renderer/components/UIComponents/Inputs/formGroupInputSmall.vue';
 import DropDown from './renderer/components/UIComponents/Dropdown.vue';
 
 /**
@@ -8,6 +9,7 @@ import DropDown from './renderer/components/UIComponents/Dropdown.vue';
 const GlobalComponents = {
   install(Vue) {
     Vue.component('fg-input', fgInput);
+    Vue.component('fg-input-small', fgInputSmall);
     Vue.component('drop-down', DropDown);
   },
 };

@@ -11,30 +11,47 @@
         </div>
       </div>
       <hr>
-      <div class="col-xs-10">
-        <fg-input type="text"
-          placeholder="5 minute task">
-        </fg-input>
+      <div class="row">
+        <div class="col-xs-8">
+          <fg-input type="text"
+            placeholder="5 minute task">
+          </fg-input>
+        </div>
+        <div class="col-xs-2 text-right">
+          <button class="btn btn-sm btn-sm-height btn-success btn-icon">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <div class="col-xs-2 text-right">
+          <button class="btn btn-sm btn-sm-height btn-info btn-icon">
+            <i class="fa fa-ellipsis-h"></i>
+          </button>
+        </div>
       </div>
-      <div class="col-xs-2 text-right">
-        <button class="btn btn-sm btn-success btn-icon">
-          <i class="fa fa-plus"></i>
-        </button>
+      <div class="row">
+        <div class="col-xs-12">
+          <fg-input-small type="text" placeholder="Note"></fg-input-small>
+        </div>
       </div>
       <ul class="list-unstyled team-members">
         <li>
           <div class="row" v-for="member in members">
             <hr>
-            <div class="col-xs-9">
+            <div class="col-xs-8 text-bolded">
               {{member.name}}
               <br>
-              <span :class="getStatusClass(member.status)">
+              <span class="text-muted">
                 <small>{{member.status}}</small>
               </span>
             </div>
-            <div class="col-xs-3 text-right">
-              <button class="btn btn-sm btn-success btn-icon">
-                <i class="fa fa-envelope"></i>
+            <div class="col-xs-2 text-right">
+              <button class="btn btn-sm btn-sm-height btn-success btn-icon">
+                <i class="fa fa-check"></i>
+              </button>
+            </div>
+            <div class="col-xs-2 text-right">
+              <button class="btn btn-sm btn-sm-height btn-warning btn-icon">
+                <i class="fa fa-minus"></i>
               </button>
             </div>
           </div>
