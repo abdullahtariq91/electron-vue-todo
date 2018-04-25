@@ -10,9 +10,10 @@
           <h1>Hey</h1>
         </div>
       </div>
+      <hr>
       <div class="col-xs-10">
         <fg-input type="text"
-                  placeholder="5 minute task">
+          placeholder="5 minute task">
         </fg-input>
       </div>
       <div class="col-xs-2 text-right">
@@ -20,6 +21,25 @@
           <i class="fa fa-plus"></i>
         </button>
       </div>
+      <ul class="list-unstyled team-members">
+        <li>
+          <div class="row" v-for="member in members">
+            <hr>
+            <div class="col-xs-9">
+              {{member.name}}
+              <br>
+              <span :class="getStatusClass(member.status)">
+                <small>{{member.status}}</small>
+              </span>
+            </div>
+            <div class="col-xs-3 text-right">
+              <button class="btn btn-sm btn-success btn-icon">
+                <i class="fa fa-envelope"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
     <hr>
 
@@ -56,6 +76,21 @@
             subTitle: 'Spent',
           },
         ],
+        members: [
+          {
+            image: 'static/img/faces/face-0.jpg',
+            name: 'Dj Khaled',
+            status: 'Offline',
+          },
+          {
+            image: 'static/img/faces/face-1.jpg',
+            name: 'Creative Tim',
+            status: 'Available',
+          },
+          {
+            image: 'static/img/faces/face-1.jpg',
+          },
+        ],
       };
     },
     methods: {
@@ -67,6 +102,18 @@
           return 'col-md-4';
         }
         return 'col-md-3';
+      },
+      getStatusClass(status) {
+        switch (status) {
+          case 'Offline':
+            return 'text-muted';
+          case 'Available':
+            return 'text-success';
+          case 'Busy':
+            return 'text-danger';
+          default:
+            return 'text-success';
+        }
       },
     },
   };
