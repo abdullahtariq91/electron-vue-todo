@@ -9,20 +9,20 @@
         <div class="avatar border-white margin-center background-white">
           <h1>Hey</h1>
         </div>
-        <h4 class="title">{{myProp}}
-          <br>
-          <a href="#">
-            <small>@chetfaker</small>
-          </a>
-        </h4>
       </div>
-      <p class="description text-center">
-        "I like the way you work it
-        <br> No diggity
-        <br> I wanna bag it up"
-      </p>
+      <div class="col-xs-10">
+        <fg-input type="text"
+                  placeholder="5 minute task">
+        </fg-input>
+      </div>
+      <div class="col-xs-2 text-right">
+        <button class="btn btn-sm btn-success btn-icon">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
     </div>
     <hr>
+
     <div class="text-center">
       <div class="row">
         <div v-for="(info,index) in details" :class="getClasses(index)">

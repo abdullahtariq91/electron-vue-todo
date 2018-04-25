@@ -1,16 +1,16 @@
 <template>
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-md-4 col-xs-12">
         <task-list :myProp="name1">
 
         </task-list>
       </div>
-      <div class="col-xs-4">
+      <div class="col-md-4 col-xs-12">
         <task-list :myProp="name2">
 
         </task-list>
       </div>
-      <div class="col-xs-4">
+      <div class="col-md-4 col-xs-12">
         <task-list :myProp="name3">
 
         </task-list>
