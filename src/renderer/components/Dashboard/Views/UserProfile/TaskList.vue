@@ -7,7 +7,7 @@
       <div class="author">
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
         <div class="avatar border-white margin-center background-white">
-          <h1>Hey</h1>
+          <h1>5</h1>
         </div>
       </div>
       <hr>
@@ -18,7 +18,7 @@
           </fg-input>
         </div>
         <div class="col-xs-2 text-right">
-          <button class="btn btn-sm btn-sm-height btn-success btn-icon">
+          <button v-on:click="addTask" class="btn btn-sm btn-sm-height btn-success btn-icon">
             <i class="fa fa-plus"></i>
           </button>
         </div>
@@ -35,13 +35,13 @@
       </div>
       <ul class="list-unstyled team-members">
         <li>
-          <div class="row" v-for="member in members">
+          <div class="row" v-for="task in tasks">
             <hr>
             <div class="col-xs-8 text-bolded">
-              {{member.name}}
+              {{task.name}}
               <br>
               <span class="text-muted">
-                <small>{{member.status}}</small>
+                <small>{{task.note}}</small>
               </span>
             </div>
             <div class="col-xs-2 text-right">
@@ -82,30 +82,21 @@
         details: [
           {
             title: '12',
-            subTitle: 'Files',
+            subTitle: 'Pending',
           },
           {
-            title: '2GB',
-            subTitle: 'Used',
+            title: '5',
+            subTitle: 'Completed',
           },
           {
-            title: '24,6$',
-            subTitle: 'Spent',
+            title: '30',
+            subTitle: 'Time Spent',
           },
         ],
-        members: [
+        tasks: [
           {
-            image: 'static/img/faces/face-0.jpg',
-            name: 'Dj Khaled',
-            status: 'Offline',
-          },
-          {
-            image: 'static/img/faces/face-1.jpg',
-            name: 'Creative Tim',
-            status: 'Available',
-          },
-          {
-            image: 'static/img/faces/face-1.jpg',
+            name: 'Water Plants',
+            note: 'Today!',
           },
         ],
       };
@@ -131,6 +122,10 @@
           default:
             return 'text-success';
         }
+      },
+      addTask() {
+        console.log('Hi!');
+        this.tasks.push({ name: 'Work', note: 'Work work' });
       },
     },
   };
