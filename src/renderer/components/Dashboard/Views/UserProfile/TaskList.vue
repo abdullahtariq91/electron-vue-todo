@@ -14,7 +14,8 @@
       <div class="row">
         <div class="col-xs-8">
           <fg-input type="text"
-            placeholder="5 minute task">
+            placeholder="5 minute task"
+            v-model="task.name">
           </fg-input>
         </div>
         <div class="col-xs-2 text-right">
@@ -30,7 +31,10 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <fg-input-small type="text" placeholder="Note"></fg-input-small>
+          <fg-input-small type="text"
+            placeholder="Note"
+            v-model="task.note">
+          </fg-input-small>
         </div>
       </div>
       <ul class="list-unstyled team-members">
@@ -79,6 +83,10 @@
     ],
     data() {
       return {
+        task: {
+          name: '',
+          note: '',
+        },
         details: [
           {
             title: '12',
@@ -124,8 +132,11 @@
         }
       },
       addTask() {
-        console.log('Hi!');
-        this.tasks.push({ name: 'Work', note: 'Work work' });
+        if (this.task.name !== '') {
+          this.tasks.push({ name: this.task.name, note: this.task.note });
+        }
+        this.task.name = '';
+        this.task.note = '';
       },
     },
   };
