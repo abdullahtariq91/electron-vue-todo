@@ -138,13 +138,24 @@
         }
         this.task.name = '';
         this.task.note = '';
+        // add toastr
+        // add api call
       },
       removeTask(index) {
         this.tasks.splice(index, 1);
+        // add toastr
+        // add api call
       },
       completeTask(index) {
         this.completedTasks.push(this.tasks[index]);
         this.tasks.splice(index, 1);
+        // add toastr
+        // add api call
+      },
+      editTask(index) {
+        this.task = this.tasks[index];
+        this.tasks.splice(index, 1);
+        // no use of it here :)
       },
     },
   };
