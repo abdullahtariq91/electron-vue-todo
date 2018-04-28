@@ -49,7 +49,7 @@
               </span>
             </div>
             <div class="col-xs-2 text-right">
-              <button class="btn btn-sm btn-sm-height btn-success btn-icon">
+              <button v-on:click="completeTask(index)" class="btn btn-sm btn-sm-height btn-success btn-icon">
                 <i class="fa fa-check"></i>
               </button>
             </div>
@@ -107,6 +107,7 @@
             note: 'Today!',
           },
         ],
+        completedTasks: [],
       };
     },
     methods: {
@@ -139,6 +140,10 @@
         this.task.note = '';
       },
       removeTask(index) {
+        this.tasks.splice(index, 1);
+      },
+      completeTask(index) {
+        this.completedTasks.push(this.tasks[index]);
         this.tasks.splice(index, 1);
       },
     },
