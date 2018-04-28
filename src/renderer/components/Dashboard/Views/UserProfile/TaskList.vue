@@ -39,7 +39,7 @@
       </div>
       <ul class="list-unstyled team-members">
         <li>
-          <div class="row" v-for="task in tasks">
+          <div class="row" v-for="(task, index) in tasks">
             <hr>
             <div class="col-xs-8 text-bolded">
               {{task.name}}
@@ -54,7 +54,7 @@
               </button>
             </div>
             <div class="col-xs-2 text-right">
-              <button class="btn btn-sm btn-sm-height btn-warning btn-icon">
+              <button v-on:click="removeTask(index)" class="btn btn-sm btn-sm-height btn-warning btn-icon">
                 <i class="fa fa-minus"></i>
               </button>
             </div>
@@ -137,6 +137,9 @@
         }
         this.task.name = '';
         this.task.note = '';
+      },
+      removeTask(index) {
+        this.tasks.splice(index, 1);
       },
     },
   };
