@@ -3,18 +3,18 @@
     <div class="image">
       <img src="static/img/background.jpg" alt="...">
     </div>
-    <div class="content">
+    <div class="content content-min-height">
       <div class="author">
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
         <div class="avatar border-white margin-center background-white">
-          <h1>5</h1>
+          <h1>{{myProp}}</h1>
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="col-xs-8">
           <fg-input type="text"
-            placeholder="5 minute task"
+            :placeholder="myProp + ' minute task'"
             v-model="task.name">
           </fg-input>
         </div>
@@ -37,7 +37,7 @@
           </fg-input-small>
         </div>
       </div>
-      <ul class="list-unstyled team-members" v-if="showCompleted">
+      <ul class="list-unstyled team-members task-min-height" v-if="showCompleted">
         <li>
           <div class="row" v-for="(task, index) in tasks">
             <hr>
@@ -54,14 +54,14 @@
               </button>
             </div>
             <div class="col-xs-2 text-right">
-              <button v-on:click="removeTask(index)" class="btn btn-sm btn-sm-height btn-warning btn-icon">
+              <button v-on:click="removeTask(index)" class="btn btn-sm btn-sm-height btn-danger btn-icon">
                 <i class="fa fa-minus"></i>
               </button>
             </div>
           </div>
         </li>
       </ul>
-      <ul class="list-unstyled team-members" v-else>
+      <ul class="list-unstyled team-members task-min-height" v-else>
         <li>
           <div class="row" v-for="(task, index) in completedTasks">
             <hr>
@@ -78,7 +78,7 @@
               </button>
             </div>
             <div class="col-xs-2 text-right">
-              <button v-on:click="removeCompletedTask(index)" class="btn btn-sm btn-sm-height btn-warning btn-icon">
+              <button v-on:click="removeCompletedTask(index)" class="btn btn-sm btn-sm-height btn-danger btn-icon">
                 <i class="fa fa-minus"></i>
               </button>
             </div>
@@ -86,8 +86,8 @@
         </li>
       </ul>
     </div>
-    <hr>
     <div class="text-center">
+      <hr>
       <div class="row" v-on:click="showCompleted = !showCompleted">
         <div class="col-md-5 col-md-offset-1" >
           <h5 v-if="!showCompleted">
@@ -150,7 +150,7 @@
             name: 'Minutes Remaining',
           },
         },
-        showCompleted: false,
+        showCompleted: true,
         task: {
           name: '',
           note: '',
