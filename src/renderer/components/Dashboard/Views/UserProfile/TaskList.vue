@@ -37,7 +37,7 @@
           </fg-input-small>
         </div>
       </div>
-      <ul class="list-unstyled team-members">
+      <ul class="list-unstyled team-members" v-if="showCompleted">
         <li>
           <div class="row" v-for="(task, index) in tasks">
             <hr>
@@ -61,15 +61,64 @@
           </div>
         </li>
       </ul>
+      <ul class="list-unstyled team-members" v-else>
+        <li>
+          <div class="row" v-for="(task, index) in completedTasks">
+            <hr>
+            <div class="col-xs-8 text-bolded">
+              {{task.name}}
+              <br>
+              <span class="text-muted">
+                <small>{{task.note}}</small>
+              </span>
+            </div>
+            <div class="col-xs-2 text-right">
+              <button v-on:click="undoCompletedTask(index)" class="btn btn-sm btn-sm-height btn-warning btn-icon">
+                <i class="fa fa-undo"></i>
+              </button>
+            </div>
+            <div class="col-xs-2 text-right">
+              <button v-on:click="removeCompletedTask(index)" class="btn btn-sm btn-sm-height btn-warning btn-icon">
+                <i class="fa fa-minus"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
     <hr>
-
     <div class="text-center">
-      <div class="row">
-        <div v-for="(info,index) in details" :class="getClasses(index)">
-          <h5>{{info.title}}
+      <div class="row" v-on:click="showCompleted = !showCompleted">
+        <div class="col-md-5 col-md-offset-1" >
+          <h5 v-if="!showCompleted">
+            {{info.completed.count}}
             <br>
-            <small>{{info.subTitle}}</small>
+            <small>
+              {{info.completed.name}}
+            </small>
+          </h5>
+          <h5 v-else>
+            {{info.pending.count}}
+            <br>
+            <small>
+              {{info.pending.name}}
+            </small>
+          </h5>
+        </div>
+        <div class="col-md-5">
+          <h5 v-if="!showCompleted">
+            {{info.timeSpent.count}}
+            <br>
+            <small>
+              {{info.timeSpent.name}}
+            </small>
+          </h5>
+          <h5 v-else>
+            {{info.timeRemaining.count}}
+            <br>
+            <small>
+              {{info.timeRemaining.name}}
+            </small>
           </h5>
         </div>
       </div>
@@ -83,30 +132,30 @@
     ],
     data() {
       return {
+        info: {
+          pending: {
+            count: 0,
+            name: 'Tasks Pending',
+          },
+          completed: {
+            count: 0,
+            name: 'Tasks Completed',
+          },
+          timeSpent: {
+            count: 0,
+            name: 'Minutes Spent',
+          },
+          timeRemaining: {
+            count: 0,
+            name: 'Minutes Remaining',
+          },
+        },
+        showCompleted: false,
         task: {
           name: '',
           note: '',
         },
-        details: [
-          {
-            title: '12',
-            subTitle: 'Pending',
-          },
-          {
-            title: '5',
-            subTitle: 'Completed',
-          },
-          {
-            title: '30',
-            subTitle: 'Time Spent',
-          },
-        ],
-        tasks: [
-          {
-            name: 'Water Plants',
-            note: 'Today!',
-          },
-        ],
+        tasks: [],
         completedTasks: [],
       };
     },
@@ -138,17 +187,41 @@
         }
         this.task.name = '';
         this.task.note = '';
+        this.info.pending.count += 1;
+        this.info.timeRemaining.count += this.myProp;
         // add toastr
         // add api call
       },
       removeTask(index) {
         this.tasks.splice(index, 1);
+        this.info.timeRemaining.count -= this.myProp;
+        this.info.pending.count -= 1;
         // add toastr
         // add api call
       },
       completeTask(index) {
         this.completedTasks.push(this.tasks[index]);
         this.tasks.splice(index, 1);
+        this.info.timeRemaining.count -= this.myProp;
+        this.info.timeSpent.count += this.myProp;
+        this.info.pending.count -= 1;
+        this.info.completed.count += 1;
+        // add toastr
+        // add api call
+      },
+      removeCompletedTask(index) {
+        this.completedTasks.splice(index, 1);
+        this.info.timeSpent.count -= this.myProp;
+        this.info.spent.count -= 1;
+        this.info.completed.count -= 1;
+      },
+      undoCompletedTask(index) {
+        this.tasks.push(this.completedTasks[index]);
+        this.completedTasks.splice(index, 1);
+        this.info.timeRemaining.count += this.myProp;
+        this.info.timeSpent.count -= this.myProp;
+        this.info.pending.count += 1;
+        this.info.completed.count -= 1;
         // add toastr
         // add api call
       },

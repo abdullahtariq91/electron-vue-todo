@@ -26,9 +26,9 @@
     },
     data() {
       return {
-        name1: 'John',
-        name2: 'Jahn',
-        name3: 'Juhn',
+        name1: 5,
+        name2: 15,
+        name3: 30,
       };
     },
   };
