@@ -6,9 +6,24 @@
     <div class="content content-min-height">
       <div class="author">
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
-        <div class="avatar border-white margin-center background-white">
+        <vue-circle class="background-white radius-circle"
+          :progress="50"
+          :size="100"
+          :reverse="false"
+          line-cap="round"
+          :fill="fill"
+          empty-fill="rgba(255,255,255, 0.9)"
+          :animation-start-value="0.0"
+          :start-angle="0"
+          insert-mode="append"
+          :thickness="10"
+          :show-percent="true"
+          @vue-circle-progress="progress"
+          @vue-circle-end="progress_end">
+        </vue-circle>
+        <!-- <div class="avatar border-white margin-center background-white">
           <h1>{{myProp}}</h1>
-        </div>
+        </div> -->
       </div>
       <hr>
       <div class="row">
@@ -126,12 +141,17 @@
   </div>
 </template>
 <script>
+  import VueCircle from 'vue2-circle-progress';
   export default {
+    components: {
+      VueCircle,
+    },
     props: [
       'myProp',
     ],
     data() {
       return {
+        fill: { gradient: ['green'] },
         info: {
           pending: {
             count: 0,
@@ -160,6 +180,12 @@
       };
     },
     methods: {
+      progress(event, progress, stepValue) {
+        console.log(stepValue);
+      },
+      progress_end() {
+        console.log('Circle progress end');
+      },
       getClasses(index) {
         const remainder = index % 3;
         if (remainder === 0) {
