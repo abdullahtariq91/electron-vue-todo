@@ -8,6 +8,7 @@
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
         <vue-circle ref="myUniqueID" class="background-white radius-circle"
           :size="100"
+          :progress="0"
           :reverse="false"
           line-cap="round"
           :fill="fill"
@@ -180,12 +181,12 @@
       };
     },
     methods: {
-      // progress(event, progress, stepValue) {
-      //   // console.log(stepValue);
-      // },
-      // progress_end() {
-      //   // console.log('Circle progress end');
-      // },
+      progress(event, progress, stepValue) {
+        console.log(stepValue);
+      },
+      progress_end() {
+        console.log('Circle progress end');
+      },
       getClasses(index) {
         const remainder = index % 3;
         if (remainder === 0) {
