@@ -7,7 +7,6 @@
       <div class="author">
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
         <vue-circle ref="myUniqueID" class="background-white radius-circle"
-          :progress="progressBar"
           :size="100"
           :reverse="false"
           line-cap="round"
@@ -209,9 +208,15 @@
         }
       },
       updateProgress() {
-        console.log(this.info.progressBar);
-        this.info.progressBar += 1;
-        this.$refs.myUniqueID.updateProgress(this.info.progressBar);
+        let percentage = 0;
+        const completed = this.info.completed.count;
+        const pending = this.info.pending.count;
+        if (pending === 0 && completed === 0) {
+          percentage = 0;
+        } else {
+          percentage = (completed / (pending + completed)) * 100;
+        }
+        this.$refs.myUniqueID.updateProgress(percentage);
       },
       addTask() {
         if (this.task.name !== '') {
@@ -221,6 +226,7 @@
         this.task.note = '';
         this.info.pending.count += 1;
         this.info.timeRemaining.count += this.myProp;
+        this.updateProgress();
         // add toastr
         // add api call
       },
@@ -228,6 +234,7 @@
         this.tasks.splice(index, 1);
         this.info.timeRemaining.count -= this.myProp;
         this.info.pending.count -= 1;
+        this.updateProgress();
         // add toastr
         // add api call
       },
@@ -238,6 +245,7 @@
         this.info.timeSpent.count += this.myProp;
         this.info.pending.count -= 1;
         this.info.completed.count += 1;
+        this.updateProgress();
         // add toastr
         // add api call
       },
@@ -246,6 +254,7 @@
         this.info.timeSpent.count -= this.myProp;
         this.info.spent.count -= 1;
         this.info.completed.count -= 1;
+        this.updateProgress();
       },
       undoCompletedTask(index) {
         this.tasks.push(this.completedTasks[index]);
@@ -254,13 +263,9 @@
         this.info.timeSpent.count -= this.myProp;
         this.info.pending.count += 1;
         this.info.completed.count -= 1;
+        this.updateProgress();
         // add toastr
         // add api call
-      },
-      editTask(index) {
-        this.task = this.tasks[index];
-        this.tasks.splice(index, 1);
-        // no use of it here :)
       },
     },
   };
