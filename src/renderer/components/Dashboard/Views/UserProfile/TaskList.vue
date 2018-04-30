@@ -6,8 +6,8 @@
     <div class="content content-min-height">
       <div class="author">
         <!-- <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="..."> -->
-        <vue-circle class="background-white radius-circle"
-          :progress="50"
+        <vue-circle ref="myUniqueID" class="background-white radius-circle"
+          :progress="progressBar"
           :size="100"
           :reverse="false"
           line-cap="round"
@@ -39,7 +39,7 @@
           </button>
         </div>
         <div class="col-xs-2 text-right">
-          <button class="btn btn-sm btn-sm-height btn-info btn-icon">
+          <button v-on:click="updateProgress" class="btn btn-sm btn-sm-height btn-info btn-icon">
             <i class="fa fa-ellipsis-h"></i>
           </button>
         </div>
@@ -151,8 +151,9 @@
     ],
     data() {
       return {
-        fill: { gradient: ['green'] },
+        fill: { gradient: ['#41b883'] },
         info: {
+          progressPercent: 0,
           pending: {
             count: 0,
             name: 'Tasks Pending',
@@ -180,12 +181,12 @@
       };
     },
     methods: {
-      progress(event, progress, stepValue) {
-        console.log(stepValue);
-      },
-      progress_end() {
-        console.log('Circle progress end');
-      },
+      // progress(event, progress, stepValue) {
+      //   // console.log(stepValue);
+      // },
+      // progress_end() {
+      //   // console.log('Circle progress end');
+      // },
       getClasses(index) {
         const remainder = index % 3;
         if (remainder === 0) {
@@ -206,6 +207,11 @@
           default:
             return 'text-success';
         }
+      },
+      updateProgress() {
+        console.log(this.info.progressBar);
+        this.info.progressBar += 1;
+        this.$refs.myUniqueID.updateProgress(this.info.progressBar);
       },
       addTask() {
         if (this.task.name !== '') {
