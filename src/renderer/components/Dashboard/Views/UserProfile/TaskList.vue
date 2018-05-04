@@ -17,20 +17,20 @@
           :start-angle="0"
           insert-mode="append"
           :thickness="10"
-          :show-percent="true"
-          @vue-circle-progress="progress"
-          @vue-circle-end="progress_end">
+          :show-percent="true">
         </vue-circle>
+        <!-- No need for this now if using vue-circle -->
         <!-- <div class="avatar border-white margin-center background-white">
           <h1>{{myProp}}</h1>
         </div> -->
       </div>
       <hr>
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-10">
           <fg-input type="text"
             :placeholder="myProp + ' minute task'"
-            v-model="task.name">
+            v-model="task.name"
+            v-on:keyup.enter="addTask">
           </fg-input>
         </div>
         <div class="col-xs-2 text-right">
@@ -38,11 +38,12 @@
             <i class="fa fa-plus"></i>
           </button>
         </div>
-        <div class="col-xs-2 text-right">
+        <!-- Prolly add menu later? -->
+        <!-- <div class="col-xs-2 text-right">
           <button v-on:click="updateProgress" class="btn btn-sm btn-sm-height btn-info btn-icon">
             <i class="fa fa-ellipsis-h"></i>
           </button>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -181,12 +182,13 @@
       };
     },
     methods: {
-      progress(event, progress, stepValue) {
-        console.log(stepValue);
-      },
-      progress_end() {
-        console.log('Circle progress end');
-      },
+      // Event functions for vue-circle
+      // progress(event, progress, stepValue) {
+      //   console.log(stepValue);
+      // },
+      // progress_end() {
+      //   console.log('Circle progress end');
+      // },
       getClasses(index) {
         const remainder = index % 3;
         if (remainder === 0) {
