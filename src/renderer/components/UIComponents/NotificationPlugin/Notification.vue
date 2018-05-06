@@ -14,6 +14,7 @@
   </div>
 </template>
 <script>
+  console.log('here in notification.vue');
   export default {
     name: 'notification',
     props: {
@@ -37,10 +38,12 @@
       },
     },
     data() {
+      console.log('hi in data');
       return {};
     },
     computed: {
       hasIcon() {
+        console.log('hi in computed');
         return this.icon && this.icon.length > 0;
       },
       alertType() {
@@ -49,14 +52,13 @@
       customPosition() {
         const initialMargin = 20;
         const alertHeight = 90;
-        // Fix later
-        // const x1 = alert.horizontalAlign;
-        // const y1 = this.horizontalAlign;
-        // const x2 = alert.verticalAlign;
-        // const y2 = this.verticalAlign;
-        // const sameAlertsCount = this.$notifications.state.
-        // filter(alert => x1 === y1 && x2 === y2).length;
-        const pixels = ((100 - 1) * alertHeight) + initialMargin;
+        const sameAlertsCount = this.$notifications.state.filter((alert) => {
+          const horizontalBool = alert.horizontalAlign === this.horizontalAlign;
+          const verticalBool = alert.verticalAlign === this.verticalAlign;
+          const returnBool = horizontalBool && verticalBool;
+          return returnBool;
+        }).length;
+        const pixels = ((sameAlertsCount - 1) * alertHeight) + initialMargin;
         const styles = {};
         if (this.verticalAlign === 'top') {
           styles.top = `${pixels}px`;

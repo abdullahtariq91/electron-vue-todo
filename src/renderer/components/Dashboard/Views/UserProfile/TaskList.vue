@@ -143,9 +143,11 @@
 </template>
 <script>
   import VueCircle from 'vue2-circle-progress';
+  import PaperNotification from '../../../UIComponents/NotificationPlugin/Notification.vue';
   export default {
     components: {
       VueCircle,
+      PaperNotification,
     },
     props: [
       'myProp',
@@ -189,6 +191,16 @@
       // progress_end() {
       //   console.log('Circle progress end');
       // },
+      notification() {
+        this.$notifications.notify(
+          {
+            message: 'COOL!',
+            icon: 'ti-gift',
+            horizontalAlign: 'top',
+            verticalAlign: 'right',
+            type: 'success',
+          });
+      },
       getClasses(index) {
         const remainder = index % 3;
         if (remainder === 0) {
@@ -222,6 +234,7 @@
         this.$refs.myUniqueID.updateProgress(percentage);
       },
       addTask() {
+        this.notification();
         if (this.task.name !== '') {
           this.tasks.push({ name: this.task.name, note: this.task.note });
         }
