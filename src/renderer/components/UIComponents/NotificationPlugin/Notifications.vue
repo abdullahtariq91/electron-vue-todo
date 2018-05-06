@@ -10,7 +10,6 @@
 </template>
 <script>
   import Notification from './Notification.vue';
-  console.log('here in notifications.vue');
   export default {
     components: {
       Notification,

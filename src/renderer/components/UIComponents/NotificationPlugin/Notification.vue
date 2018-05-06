@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-  console.log('here in notification.vue');
   export default {
     name: 'notification',
     props: {
@@ -38,12 +37,10 @@
       },
     },
     data() {
-      console.log('hi in data');
       return {};
     },
     computed: {
       hasIcon() {
-        console.log('hi in computed');
         return this.icon && this.icon.length > 0;
       },
       alertType() {
