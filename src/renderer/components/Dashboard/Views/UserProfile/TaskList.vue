@@ -237,12 +237,12 @@
         this.notification();
         if (this.task.name !== '') {
           this.tasks.push({ name: this.task.name, note: this.task.note });
+          this.task.name = '';
+          this.task.note = '';
+          this.info.pending.count += 1;
+          this.info.timeRemaining.count += this.myProp;
+          this.updateProgress();
         }
-        this.task.name = '';
-        this.task.note = '';
-        this.info.pending.count += 1;
-        this.info.timeRemaining.count += this.myProp;
-        this.updateProgress();
         // add toastr
         // add api call
       },
